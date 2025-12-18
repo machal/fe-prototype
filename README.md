@@ -54,8 +54,51 @@ Build automaticky:
 Výsledek je v `dist/` složce:
 - Každá route má svůj vlastní `index.html` soubor
 - Všechny soubory jsou statické a nevyžadují server
+- Používá relativní cesty, takže funguje v jakékoliv podsložce
 - Můžete je nasadit na jakýkoliv statický hosting (Netlify, Vercel, GitHub Pages, atd.)
 - Nebo je otevřít přímo v prohlížeči (dvojklik na `dist/index.html`)
+- **Nasazení do podsložky**: Stačí nahrát obsah `dist/` složky do jakékoliv podsložky na serveru (např. `/data/demo/`, `/prototype/`, atd.)
+
+## Nasazení na GitHub Pages
+
+### Automatické nasazení (doporučeno)
+
+1. **Vytvořte GitHub repository** (pokud ještě nemáte):
+   ```bash
+   git init
+   git add .
+   git commit -m "Initial commit"
+   git remote add origin https://github.com/VASE_USERNAME/VASE_REPO.git
+   git push -u origin main
+   ```
+
+2. **Nasaďte na GitHub Pages**:
+   ```bash
+   npm run deploy
+   ```
+
+   Tento příkaz:
+   - Vytvoří build
+   - Nahraje obsah `dist/` složky na `gh-pages` branch
+   - GitHub Pages automaticky nasadí stránky
+
+3. **Aktivujte GitHub Pages**:
+   - Jděte do Settings vašeho repository
+   - V sekci "Pages" vyberte source: `gh-pages` branch
+   - Vaše stránky budou dostupné na: `https://VASE_USERNAME.github.io/VASE_REPO/`
+
+### Manuální nasazení
+
+Pokud chcete nasadit manuálně:
+
+1. Spusťte build:
+   ```bash
+   npm run build
+   ```
+
+2. Nahrajte obsah `dist/` složky na GitHub Pages:
+   - Buď použijte GitHub Actions
+   - Nebo nahrajte soubory přímo do `gh-pages` branch
 
 **Struktura dist/ po buildu:**
 ```

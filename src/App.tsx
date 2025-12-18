@@ -1,5 +1,4 @@
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
-import { frontKonData } from './data';
 import Home from './pages/Home';
 import TalkDetail from './pages/TalkDetail';
 import SpeakerDetail from './pages/SpeakerDetail';

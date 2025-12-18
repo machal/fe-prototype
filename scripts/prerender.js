@@ -1,28 +1,32 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { renderToString } from 'react-dom/server';
+import React from 'react';
+import { StaticRouter } from 'react-router-dom/server';
 
+// Dynamicky importujeme App (ESM)
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const distPath = join(__dirname, '..', 'dist');
 
-// Načteme data
+// Načteme data pro získání všech routes
 const dataPath = join(__dirname, '..', 'src', 'data.ts');
 const dataContent = readFileSync(dataPath, 'utf-8');
 
 // Extrahujeme všechny IDs z dat
 const extractIds = (content, pattern) => {
-  const matches = [...content.matchAll(new RegExp(pattern, 'g'))];
+  const matches = [...content.matchAll(pattern)];
   return matches.map(m => m[1]).filter(Boolean);
 };
 
-// Talk IDs - hledáme id: 'číslo'
+// Talk IDs
 const talkIds = extractIds(dataContent, /id:\s*['"]([\d]+)['"]/g).filter(id => /^\d+$/.test(id));
 
-// Speaker IDs
+// Speaker IDs  
 const speakerIds = extractIds(dataContent, /id:\s*['"]([\d]+)['"]/g).filter(id => /^\d+$/.test(id));
 
-// Topic IDs - hledáme string IDs
+// Topic IDs
 const topicIds = extractIds(dataContent, /id:\s*['"]([a-z]+)['"]/g).filter(id => /^[a-z]+$/.test(id));
 
 // Year IDs
@@ -37,51 +41,65 @@ const routes = [
   ...yearIds.map(id => `/years/${id}`),
 ];
 
-// Odstraníme duplicity
 const uniqueRoutes = [...new Set(routes)];
 
-// Načteme index.html
-const indexHtml = readFileSync(join(distPath, 'index.html'), 'utf-8');
+// Načteme HTML template
+const templatePath = join(distPath, 'index.html');
+let templateHtml = readFileSync(templatePath, 'utf-8');
 
-console.log('Pre-rendering routes...');
+console.log('SSG Pre-rendering routes...');
 console.log(`Nalezeno: ${talkIds.length} přednášek, ${speakerIds.length} speakerů, ${topicIds.length} témat, ${yearIds.length} ročníků\n`);
 
+// Dynamicky importujeme App komponentu
+const { default: App } = await import('../dist/assets/index-B4ZEEGCC.js');
+
 uniqueRoutes.forEach(route => {
-  // Vytvoříme HTML pro každou route
-  let html = indexHtml;
-  
-  // Pro ne-root routes potřebujeme upravit base path
+  // Renderujeme React komponentu do HTML stringu
+  const htmlContent = renderToString(
+    React.createElement(StaticRouter, { location: route },
+      React.createElement(App)
+    )
+  );
+
+  // Vložíme vyrenderovaný obsah do template
+  let html = templateHtml.replace(
+    '<div id="root"></div>',
+    `<div id="root">${htmlContent}</div>`
+  );
+
+  // Pro ne-root routes upravíme cesty k assetům
   if (route !== '/') {
     const depth = route.split('/').filter(Boolean).length;
-    const basePath = '../'.repeat(depth - 1) || './';
+    const assetBasePath = '../'.repeat(depth);
     
-    // Upravíme cesty k assetům - najdeme všechny absolutní cesty
-    html = html.replace(/href="\//g, `href="${basePath}`);
-    html = html.replace(/src="\//g, `src="${basePath}`);
+    // Upravíme cesty k assetům
+    html = html.replace(/href="\.\//g, `href="${assetBasePath}`);
+    html = html.replace(/src="\.\//g, `src="${assetBasePath}`);
     
-    // Také upravíme base tag pokud existuje
+    // Upravíme base tag
     if (html.includes('<base')) {
-      html = html.replace(/<base[^>]*>/, `<base href="${basePath}">`);
+      html = html.replace(/<base[^>]*href="[^"]*"[^>]*>/, `<base href="${assetBasePath}">`);
     }
   }
-  
+
   // Vytvoříme složku pro route
   const routePath = route === '/' ? distPath : join(distPath, ...route.split('/').filter(Boolean));
   if (!existsSync(routePath)) {
     mkdirSync(routePath, { recursive: true });
   }
-  
-  // Pro nested routes vytvoříme index.html
+
+  // Uložíme HTML soubor
   if (route === '/') {
     writeFileSync(join(distPath, 'index.html'), html);
   } else {
     writeFileSync(join(routePath, 'index.html'), html);
   }
-  
+
   console.log(`✓ ${route}`);
 });
 
-console.log(`\n✅ Pre-rendering dokončen! ${uniqueRoutes.length} routes vytvořeno.`);
-console.log('📁 Statické soubory jsou v dist/ složce.');
-console.log('🚀 Můžete je nasadit na jakýkoliv statický hosting (Netlify, Vercel, GitHub Pages, atd.)');
-console.log('💡 Nebo je můžete otevřít přímo v prohlížeči (index.html)');
+console.log(`\n✅ SSG Pre-rendering dokončen! ${uniqueRoutes.length} routes vytvořeno.`);
+console.log('📁 Statické HTML soubory jsou v dist/ složce.');
+console.log('🚀 Fungují i bez JavaScriptu (obsah je pre-renderovaný)');
+console.log('💡 JS se načte pro interaktivitu (hydration)');
+
