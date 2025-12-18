@@ -1,29 +1,23 @@
 {
   "name": "frontkon-prototype",
   "version": "1.0.0",
-  "type": "module",
+  "private": true,
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build && npm run prerender",
-    "prerender": "npx --yes tsx scripts/prerender.ts",
-    "preview": "vite preview",
-    "deploy": "npm run build && npx gh-pages -d dist"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "deploy": "npm run build && npx gh-pages -d out"
   },
   "dependencies": {
+    "next": "^14.0.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.20.1"
-  },
-  "peerDependencies": {
-    "@types/node": "^20.0.0"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.43",
-    "@types/react-dom": "^18.2.17",
-    "@vitejs/plugin-react": "^4.2.1",
-    "tsx": "^4.7.0",
-    "typescript": "^5.2.2",
-    "vite": "^5.0.8"
+    "@types/node": "^20.10.6",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "typescript": "^5.3.3"
   }
 }
-

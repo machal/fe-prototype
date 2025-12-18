@@ -1,0 +1,60 @@
+{
+  "pages": {
+    "/_not-found/page": [
+      "static/chunks/webpack-c81f7fd28659d64f.js",
+      "static/chunks/fd9d1056-3eee857bde8f3b06.js",
+      "static/chunks/117-ab3869bd270a9f4c.js",
+      "static/chunks/main-app-5fb7b25e4e6229c8.js",
+      "static/chunks/app/_not-found/page-d1916c0b16ebe328.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack-c81f7fd28659d64f.js",
+      "static/chunks/fd9d1056-3eee857bde8f3b06.js",
+      "static/chunks/117-ab3869bd270a9f4c.js",
+      "static/chunks/main-app-5fb7b25e4e6229c8.js",
+      "static/css/575c3fcf0b5a3dde.css",
+      "static/chunks/972-ceea3baa05359a1c.js",
+      "static/chunks/app/layout-653ead7b96cb4fe5.js"
+    ],
+    "/page": [
+      "static/chunks/webpack-c81f7fd28659d64f.js",
+      "static/chunks/fd9d1056-3eee857bde8f3b06.js",
+      "static/chunks/117-ab3869bd270a9f4c.js",
+      "static/chunks/main-app-5fb7b25e4e6229c8.js",
+      "static/chunks/972-ceea3baa05359a1c.js",
+      "static/chunks/app/page-4d1d037a37f1ba13.js"
+    ],
+    "/speakers/[id]/page": [
+      "static/chunks/webpack-c81f7fd28659d64f.js",
+      "static/chunks/fd9d1056-3eee857bde8f3b06.js",
+      "static/chunks/117-ab3869bd270a9f4c.js",
+      "static/chunks/main-app-5fb7b25e4e6229c8.js",
+      "static/chunks/972-ceea3baa05359a1c.js",
+      "static/chunks/app/speakers/[id]/page-a29f4b8f106a3c2d.js"
+    ],
+    "/topics/[id]/page": [
+      "static/chunks/webpack-c81f7fd28659d64f.js",
+      "static/chunks/fd9d1056-3eee857bde8f3b06.js",
+      "static/chunks/117-ab3869bd270a9f4c.js",
+      "static/chunks/main-app-5fb7b25e4e6229c8.js",
+      "static/chunks/972-ceea3baa05359a1c.js",
+      "static/chunks/app/topics/[id]/page-e37bf1ee2e7d9fe8.js"
+    ],
+    "/talks/[id]/page": [
+      "static/chunks/webpack-c81f7fd28659d64f.js",
+      "static/chunks/fd9d1056-3eee857bde8f3b06.js",
+      "static/chunks/117-ab3869bd270a9f4c.js",
+      "static/chunks/main-app-5fb7b25e4e6229c8.js",
+      "static/chunks/972-ceea3baa05359a1c.js",
+      "static/chunks/app/talks/[id]/page-12503447f8ac67d3.js"
+    ],
+    "/years/[id]/page": [
+      "static/chunks/webpack-c81f7fd28659d64f.js",
+      "static/chunks/fd9d1056-3eee857bde8f3b06.js",
+      "static/chunks/117-ab3869bd270a9f4c.js",
+      "static/chunks/main-app-5fb7b25e4e6229c8.js",
+      "static/chunks/972-ceea3baa05359a1c.js",
+      "static/chunks/app/years/[id]/page-8aa48011de61619c.js"
+    ]
+  }
+}

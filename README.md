@@ -16,11 +16,11 @@ Prototyp webové aplikace pro správu a zobrazení databáze přednášek, speak
 
 ## Technologie
 
-- React 18
-- TypeScript
-- React Router DOM (routing)
-- Vite
-- CSS3 (minimalistický design podle FrontKon webu)
+- **Next.js 14** - React framework s App Router
+- **React 18** - UI knihovna
+- **TypeScript** - Typování
+- **Static Site Generation (SSG)** - Pravé statické HTML soubory
+- **CSS3** - Minimalistický design podle FrontKon webu
 
 ## Instalace
 
@@ -36,7 +36,7 @@ Pro vývojový server:
 npm run dev
 ```
 
-Aplikace poběží na `http://localhost:5173`
+Aplikace poběží na `http://localhost:3000`
 
 ## Build
 
@@ -46,18 +46,18 @@ Pro produkční build, který vytvoří statické HTML soubory:
 npm run build
 ```
 
-Build automaticky:
+Next.js automaticky:
 1. Zkompiluje TypeScript
-2. Vytvoří produkční build pomocí Vite
-3. Pre-renderuje všechny routes do statických HTML souborů
+2. Pre-renderuje všechny routes do statických HTML souborů pomocí `generateStaticParams`
+3. Vytvoří statické HTML soubory v `out/` složce
 
-Výsledek je v `dist/` složce:
+Výsledek je v `out/` složce:
 - Každá route má svůj vlastní `index.html` soubor
 - Všechny soubory jsou statické a nevyžadují server
 - Používá relativní cesty, takže funguje v jakékoliv podsložce
 - Můžete je nasadit na jakýkoliv statický hosting (Netlify, Vercel, GitHub Pages, atd.)
-- Nebo je otevřít přímo v prohlížeči (dvojklik na `dist/index.html`)
-- **Nasazení do podsložky**: Stačí nahrát obsah `dist/` složky do jakékoliv podsložky na serveru (např. `/data/demo/`, `/prototype/`, atd.)
+- Nebo je otevřít přímo v prohlížeči (dvojklik na `out/index.html`)
+- **Nasazení do podsložky**: Stačí nahrát obsah `out/` složky do jakékoliv podsložky na serveru (např. `/data/demo/`, `/prototype/`, atd.)
 
 ## Nasazení na GitHub Pages
 
@@ -79,7 +79,7 @@ Výsledek je v `dist/` složce:
 
    Tento příkaz:
    - Vytvoří build
-   - Nahraje obsah `dist/` složky na `gh-pages` branch
+   - Nahraje obsah `out/` složky na `gh-pages` branch
    - GitHub Pages automaticky nasadí stránky
 
 3. **Aktivujte GitHub Pages**:
@@ -96,13 +96,13 @@ Pokud chcete nasadit manuálně:
    npm run build
    ```
 
-2. Nahrajte obsah `dist/` složky na GitHub Pages:
+2. Nahrajte obsah `out/` složky na GitHub Pages:
    - Buď použijte GitHub Actions
    - Nebo nahrajte soubory přímo do `gh-pages` branch
 
-**Struktura dist/ po buildu:**
+**Struktura out/ po buildu:**
 ```
-dist/
+out/
 ├── index.html          # Domovská stránka
 ├── talks/
 │   ├── 1/
@@ -127,28 +127,38 @@ dist/
 ## Struktura projektu
 
 ```
-src/
-  ├── pages/          # Stránky (Home, TalkDetail, SpeakerDetail, atd.)
-  ├── components/     # React komponenty
-  │   ├── TalkCard.tsx
-  │   ├── SpeakerCard.tsx
-  │   ├── TopicCard.tsx
-  │   ├── YearCard.tsx
-  │   └── Card.css
-  ├── types.ts        # TypeScript typy
-  ├── data.ts         # Data (30 přednášek, 15 speakerů, 12 témat, 6 ročníků)
-  ├── App.tsx         # Hlavní komponenta s routing
-  ├── App.css         # Hlavní styly
-  └── main.tsx        # Vstupní bod
+app/
+  ├── layout.tsx        # Hlavní layout
+  ├── page.tsx          # Domovská stránka
+  ├── globals.css       # Globální styly
+  ├── talks/
+  │   └── [id]/
+  │       └── page.tsx  # Detail přednášky
+  ├── speakers/
+  │   └── [id]/
+  │       └── page.tsx  # Detail speakera
+  ├── topics/
+  │   └── [id]/
+  │       └── page.tsx  # Detail tématu
+  └── years/
+      └── [id]/
+          └── page.tsx  # Detail ročníku
+components/
+  ├── TalkCard.tsx
+  ├── SpeakerCard.tsx
+  ├── TopicCard.tsx
+  └── YearCard.tsx
+data.json              # Data (30 přednášek, 15 speakerů, 12 témat, 6 ročníků)
+types.ts               # TypeScript typy
 ```
 
 ## Routing
 
 - `/` - Domovská stránka se seznamy
-- `/talks/:id` - Detail přednášky
-- `/speakers/:id` - Detail speakera
-- `/topics/:id` - Detail tématu
-- `/years/:id` - Detail ročníku
+- `/talks/:id/` - Detail přednášky
+- `/speakers/:id/` - Detail speakera
+- `/topics/:id/` - Detail tématu
+- `/years/:id/` - Detail ročníku
 
 ## Datový model
 
@@ -177,8 +187,23 @@ src/
 
 ## Úpravy dat
 
-Data jsou uložena v `src/data.ts`. Můžete je upravit podle potřeby nebo v budoucnu připojit k API/backendu.
+Data jsou uložena v `data.json`. Můžete je upravit podle potřeby nebo v budoucnu připojit k API/backendu.
 
 ## SSG (Static Site Generation)
 
-Aplikace je připravena pro SSG. Build vytváří statické HTML soubory, které lze nasadit na jakýkoliv statický hosting (Netlify, Vercel, GitHub Pages, atd.).
+Aplikace používá Next.js s `output: 'export'`, což vytváří skutečné statické HTML soubory. Všechny stránky jsou pre-renderovány při buildu pomocí `generateStaticParams`, takže:
+
+- ✅ Obsah je viditelný i bez JavaScriptu
+- ✅ SEO-friendly (plně indexovatelné vyhledávači)
+- ✅ Rychlé načítání (žádné server-side rendering)
+- ✅ Funguje na jakémkoliv statickém hostingu
+- ✅ Může být nasazeno do jakékoliv podsložky
+
+## Proč Next.js místo Vite + Puppeteer?
+
+Next.js má SSG zabudovaný přímo v frameworku:
+- ✅ Žádné externí nástroje (Puppeteer, Vite preview server)
+- ✅ Rychlejší build (pouze kompilace, žádné renderování v prohlížeči)
+- ✅ Nativní podpora pro statický export
+- ✅ Automatické generování všech routes pomocí `generateStaticParams`
+- ✅ Správný způsob, jak dělat SSG v React ekosystému
