@@ -1,0 +1,86 @@
+import { FrontKonData } from './types';
+
+export const frontKonData: FrontKonData = {
+  years: [
+    { id: '2020', year: 2020, location: 'Praha', date: '3. října 2020' },
+    { id: '2021', year: 2021, location: 'Praha', date: '2. října 2021' },
+    { id: '2022', year: 2022, location: 'Praha', date: '1. října 2022' },
+    { id: '2023', year: 2023, location: 'Praha', date: '7. října 2023' },
+    { id: '2024', year: 2024, location: 'Praha, O2 Universum', date: '5. října 2024' },
+    { id: '2025', year: 2025, location: 'Praha, O2 Universum', date: '4. října 2025' },
+  ],
+  speakers: [
+    { id: '1', name: 'Jan Novák', bio: 'Senior frontend developer s více než 10 lety zkušeností. Specializuje se na React a TypeScript.', company: 'TechCorp', twitter: '@jannovak', github: 'jannovak' },
+    { id: '2', name: 'Marie Svobodová', bio: 'UX designerka a vývojářka, která se zaměřuje na přístupnost a inkluzivní design.', company: 'DesignStudio', twitter: '@mariesvobodova', website: 'https://mariesvobodova.cz' },
+    { id: '3', name: 'Tomáš Dvořák', bio: 'Full-stack developer, který miluje moderní JavaScript a experimentuje s novými frameworky.', company: 'StartupXYZ', github: 'tomasdvorak' },
+    { id: '4', name: 'Petr Novotný', bio: 'Architekt frontend aplikací s důrazem na škálovatelnost a výkon.', company: 'BigTech', twitter: '@petrnovotny', linkedin: 'petrnovotny' },
+    { id: '5', name: 'Anna Procházková', bio: 'CSS expertka a designérka, která vytváří krásné a funkční uživatelské rozhraní.', company: 'DesignAgency', twitter: '@annaprochazkova' },
+    { id: '6', name: 'Jakub Svoboda', bio: 'Vue.js evangelista a autor několika open-source knihoven.', company: 'VueCorp', github: 'jakubsvoboda', website: 'https://jakubsvoboda.dev' },
+    { id: '7', name: 'Lucie Dvořáková', bio: 'Performance engineer zaměřující se na optimalizaci webových aplikací.', company: 'PerfLab', twitter: '@luciedvorakova' },
+    { id: '8', name: 'Martin Kratochvíl', bio: 'Svelte enthusiast a tvůrce moderních webových aplikací.', company: 'SvelteDev', github: 'martinkratochvil' },
+    { id: '9', name: 'Eva Nováková', bio: 'Accessibility specialist a konzultantka pro inkluzivní design.', company: 'A11yExperts', twitter: '@evanovakova', website: 'https://a11yexperts.cz' },
+    { id: '10', name: 'David Horák', bio: 'TypeScript expert a autor TypeScript knihoven.', company: 'TSExperts', github: 'davidhorak', twitter: '@davidhorak' },
+    { id: '11', name: 'Tereza Svobodová', bio: 'React Native vývojářka specializující se na mobilní aplikace.', company: 'MobileDev', twitter: '@terezasvobodova' },
+    { id: '12', name: 'Ondřej Procházka', bio: 'Web Components evangelista a tvůrce komponentových systémů.', company: 'WebComponents', github: 'ondrejprochazka' },
+    { id: '13', name: 'Kateřina Nová', bio: 'Design systems architektka a tvůrkyně designových systémů.', company: 'DesignSystems', twitter: '@katerinanova' },
+    { id: '14', name: 'Filip Dvořák', bio: 'Next.js expert a tvůrce full-stack aplikací.', company: 'NextDev', github: 'filipdvorak', website: 'https://nextdev.cz' },
+    { id: '15', name: 'Barbora Svobodová', bio: 'Testing specialist zaměřující se na automatizované testování frontendu.', company: 'TestLab', twitter: '@barborasvobodova' },
+  ],
+  topics: [
+    { id: 'react', name: 'React', description: 'Moderní React a jeho ekosystém' },
+    { id: 'typescript', name: 'TypeScript', description: 'Typování v JavaScriptu' },
+    { id: 'accessibility', name: 'Přístupnost', description: 'Webová přístupnost a inkluzivní design' },
+    { id: 'performance', name: 'Výkon', description: 'Optimalizace výkonu webových aplikací' },
+    { id: 'testing', name: 'Testování', description: 'Testování frontend aplikací' },
+    { id: 'vue', name: 'Vue.js', description: 'Progresivní JavaScript framework' },
+    { id: 'css', name: 'CSS', description: 'Moderní CSS techniky a best practices' },
+    { id: 'svelte', name: 'Svelte', description: 'Komponentový framework' },
+    { id: 'nextjs', name: 'Next.js', description: 'React framework pro produkci' },
+    { id: 'webcomponents', name: 'Web Components', description: 'Nativní webové komponenty' },
+    { id: 'designsystems', name: 'Design Systems', description: 'Designové systémy a jejich tvorba' },
+    { id: 'mobile', name: 'Mobile', description: 'Mobilní vývoj a responsive design' },
+  ],
+  talks: [
+    // 2020
+    { id: '1', title: 'React 19: Co je nového?', description: 'Přehled nových funkcí v React 19, včetně server components a nových hooks.', duration: 45, speakerId: '1', topicIds: ['react'], yearId: '2020', level: 'intermediate', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    { id: '2', title: 'TypeScript pro pokročilé', description: 'Pokročilé techniky v TypeScriptu: conditional types, template literals a utility types.', duration: 60, speakerId: '1', topicIds: ['typescript', 'react'], yearId: '2020', level: 'advanced', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    { id: '3', title: 'Přístupnost není volitelná', description: 'Proč je přístupnost důležitá a jak ji implementovat do vašich projektů.', duration: 30, speakerId: '2', topicIds: ['accessibility'], yearId: '2020', level: 'beginner', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    { id: '4', title: 'Optimalizace výkonu React aplikací', description: 'Praktické tipy a triky pro zlepšení výkonu vašich React aplikací.', duration: 45, speakerId: '3', topicIds: ['react', 'performance'], yearId: '2020', level: 'intermediate', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    { id: '5', title: 'Testování React komponent', description: 'Kompletní průvodce testováním React komponent pomocí Jest a React Testing Library.', duration: 50, speakerId: '3', topicIds: ['react', 'testing'], yearId: '2020', level: 'intermediate', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    
+    // 2021
+    { id: '6', title: 'Vue 3 Composition API', description: 'Hluboký ponor do Composition API ve Vue 3 a jak ho efektivně používat.', duration: 45, speakerId: '6', topicIds: ['vue'], yearId: '2021', level: 'intermediate', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    { id: '7', title: 'Moderní CSS Grid a Flexbox', description: 'Pokročilé techniky layoutu pomocí CSS Grid a Flexbox.', duration: 40, speakerId: '5', topicIds: ['css'], yearId: '2021', level: 'intermediate', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    { id: '8', title: 'TypeScript v praxi', description: 'Jak efektivně používat TypeScript v reálných projektech.', duration: 50, speakerId: '10', topicIds: ['typescript'], yearId: '2021', level: 'intermediate', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    { id: '9', title: 'React Performance Patterns', description: 'Vzory a techniky pro optimalizaci výkonu React aplikací.', duration: 55, speakerId: '4', topicIds: ['react', 'performance'], yearId: '2021', level: 'advanced', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    { id: '10', title: 'Accessibility First', description: 'Jak navrhovat a vyvíjet přístupné webové aplikace od začátku.', duration: 45, speakerId: '9', topicIds: ['accessibility'], yearId: '2021', level: 'beginner', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    
+    // 2022
+    { id: '11', title: 'Svelte: Rethinking Reactivity', description: 'Jak Svelte přistupuje k reaktivitě jinak než ostatní frameworky.', duration: 40, speakerId: '8', topicIds: ['svelte'], yearId: '2022', level: 'intermediate', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    { id: '12', title: 'Next.js 13 a App Router', description: 'Nový App Router v Next.js 13 a jak ho využít v projektech.', duration: 50, speakerId: '14', topicIds: ['nextjs', 'react'], yearId: '2022', level: 'intermediate', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    { id: '13', title: 'Web Components v praxi', description: 'Jak používat nativní Web Components v moderních aplikacích.', duration: 45, speakerId: '12', topicIds: ['webcomponents'], yearId: '2022', level: 'advanced', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    { id: '14', title: 'CSS Container Queries', description: 'Revoluční novinka v CSS: container queries a jejich praktické využití.', duration: 35, speakerId: '5', topicIds: ['css'], yearId: '2022', level: 'intermediate', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    { id: '15', title: 'Testing Strategies', description: 'Komplexní strategie testování frontend aplikací.', duration: 55, speakerId: '15', topicIds: ['testing'], yearId: '2022', level: 'advanced', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    
+    // 2023
+    { id: '16', title: 'React Server Components', description: 'Hluboký ponor do React Server Components a jejich implementace.', duration: 60, speakerId: '1', topicIds: ['react'], yearId: '2023', level: 'advanced', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    { id: '17', title: 'Design Systems Architecture', description: 'Jak navrhnout a implementovat škálovatelný design systém.', duration: 50, speakerId: '13', topicIds: ['designsystems'], yearId: '2023', level: 'intermediate', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    { id: '18', title: 'Vue 3 Performance', description: 'Optimalizace výkonu Vue 3 aplikací pomocí Composition API.', duration: 45, speakerId: '6', topicIds: ['vue', 'performance'], yearId: '2023', level: 'intermediate', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    { id: '19', title: 'Mobile First Development', description: 'Best practices pro vývoj mobilních webových aplikací.', duration: 40, speakerId: '11', topicIds: ['mobile'], yearId: '2023', level: 'beginner', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    { id: '20', title: 'TypeScript 5.0 Features', description: 'Nové funkce v TypeScript 5.0 a jak je využít.', duration: 45, speakerId: '10', topicIds: ['typescript'], yearId: '2023', level: 'intermediate', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    
+    // 2024
+    { id: '21', title: 'React 19: Co je nového?', description: 'Přehled nových funkcí v React 19, včetně server components a nových hooks.', duration: 45, speakerId: '1', topicIds: ['react'], yearId: '2024', level: 'intermediate', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    { id: '22', title: 'Next.js 14 a RSC', description: 'React Server Components v Next.js 14 a jejich praktické využití.', duration: 55, speakerId: '14', topicIds: ['nextjs', 'react'], yearId: '2024', level: 'advanced', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    { id: '23', title: 'Accessibility Testing', description: 'Jak testovat přístupnost webových aplikací automatizovaně.', duration: 40, speakerId: '9', topicIds: ['accessibility', 'testing'], yearId: '2024', level: 'intermediate', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    { id: '24', title: 'CSS Cascade Layers', description: 'Nový koncept CSS Cascade Layers a jejich praktické využití.', duration: 35, speakerId: '5', topicIds: ['css'], yearId: '2024', level: 'intermediate', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    { id: '25', title: 'Vue 3 Composition API Patterns', description: 'Pokročilé vzory při používání Composition API ve Vue 3.', duration: 50, speakerId: '6', topicIds: ['vue'], yearId: '2024', level: 'advanced', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    
+    // 2025
+    { id: '26', title: 'React 20 Preview', description: 'Náhled na novinky v React 20 a co můžeme očekávat.', duration: 45, speakerId: '1', topicIds: ['react'], yearId: '2025', level: 'intermediate', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    { id: '27', title: 'TypeScript 5.5 Features', description: 'Nejnovější funkce v TypeScript 5.5 a jejich praktické využití.', duration: 40, speakerId: '10', topicIds: ['typescript'], yearId: '2025', level: 'intermediate', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    { id: '28', title: 'Performance Budgets', description: 'Jak nastavit a dodržovat performance budgets v projektech.', duration: 50, speakerId: '7', topicIds: ['performance'], yearId: '2025', level: 'advanced', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    { id: '29', title: 'Design Tokens', description: 'Jak používat design tokens v designových systémech.', duration: 45, speakerId: '13', topicIds: ['designsystems'], yearId: '2025', level: 'intermediate', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+    { id: '30', title: 'Web Components Best Practices', description: 'Best practices pro vývoj a používání Web Components.', duration: 55, speakerId: '12', topicIds: ['webcomponents'], yearId: '2025', level: 'advanced', language: 'cs', youtubeId: 'dQw4w9WgXcQ' },
+  ],
+};
