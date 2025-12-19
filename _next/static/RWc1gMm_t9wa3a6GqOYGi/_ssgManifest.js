@@ -1,1 +1,0 @@
-self.__SSG_MANIFEST=new Set(["\u002Fspeakers\u002F[id]","\u002Ftalks\u002F[id]","\u002Ftopics\u002F[id]","\u002Fyears\u002F[id]"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()
